@@ -20,7 +20,18 @@ public class JerkSONParserTest {
     }
 
     @Test
-    public void myTest() {
+    public void nameTest() {
+        Pattern p = Pattern.compile("(?i)name:(\\w+)");
+        Matcher m = p.matcher(jerkSONText);
+
+        while (m.find()) {
+            System.out.println(m.group(1));
+        }
+
+    }
+
+    @Test
+    public void namepriceTest() {
         Pattern p = Pattern.compile("(?i)name:(\\w+)\\Wprice:(\\w+[.]\\w+)");
         Matcher m = p.matcher(jerkSONText);
 
@@ -29,5 +40,18 @@ public class JerkSONParserTest {
         }
 
     }
+
+    @Test
+    public void expirationTest() {
+        // expiration format 1/25/2016
+        Pattern p = Pattern.compile("(?i)expiration:(\\w+[/]\\w+[/]\\w+)");
+        Matcher m = p.matcher(jerkSONText);
+
+        while (m.find()) {
+            System.out.println(m.group(1));
+        }
+
+    }
+
 
 }
